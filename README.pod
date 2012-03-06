@@ -1,0 +1,44 @@
+=head1 Proof-of-concept SVN->Git History Converter
+
+This proof-of-concept code is not intended for production use!  If you
+came here looking to convert your repository from SVN, consider one of
+the following:
+
+=over 4
+
+=item * http://schacon.github.com/git/git-svn.html - full-featured but slow
+
+=item * https://github.com/git/git/tree/master/contrib/svn-fe - fast but light
+
+=back
+
+This repository contains a collection of tools for exporting history
+information from SVN and importing it into Git.  It was originally
+written to explore problems and solutions around the conversion
+process, and has been put online to further discussion:
+http://article.gmane.org/gmane.comp.version-control.git/192163
+
+=head2 Overview
+
+svn-fe does an excellent job of importing a branchless SVN repository
+into Git, but does nothing to reconstruct the history information
+(i.e. branches, merges and tags).  This project aims to do that
+reconstruction.  It consists of three parts:
+
+=over 4
+
+=item * Branch History Format - an abstract description of SVN history
+
+=item * svn-branch-export.pl - a script to describe a history from an SVN dump
+
+=item * git-branch-import.pl - a script to apply SVN history to a git repository
+
+=back
+
+The fact that these have been developed together is something of a
+historical requirement - it would be impossible to create any one
+without having the other two to test against, but it's possible (even
+desirable) to reuse any one as part of a different project.
+
+Please see the documentation in the two .pl files for more details
+about how to use them.
